@@ -96,7 +96,8 @@ const createBookCard = (book) => {
     author.textContent = book.author
     pages.textContent = `${book.pages} pages`
     removeBtn.textContent = 'Remove'
-
+    removeBtn.classList.add('remove-btn')
+    
     if (book.isRead) {
         readBtn.textContent = 'Read'
         readBtn.classList.add('btn-light-green')
@@ -149,14 +150,9 @@ const removeBook = (e) => {
         '"',
         ''
     )
-
-    if (auth.currentUser) {
-        removeBookDB(title)
-    } else {
-        library.removeBook(title)
-        saveLocal()
-        updateBooksGrid()
-    }
+    library.removeBook(title)
+    saveLocal()
+    updateBooksGrid()
 }
 
 
@@ -178,19 +174,14 @@ const toggleRead = (e) => {
     )
     const book = library.getBook(title)
 
-    if (auth.currentUser) {
-        toggleBookIsReadDB(book)
-    } else {
-        book.isRead = !book.isRead
-        saveLocal()
-        updateBooksGrid()
-    }
+    book.isRead = !book.isRead
+    saveLocal()
+    updateBooksGrid()
 }
 
 addBookBtn.onclick = openAddBookModal
 overlay.onclick = closeAllModals
 addBookForm.onsubmit = addBook
-// window.onkeydown = handleKeyboardInput
 
 
 
@@ -198,4 +189,5 @@ addBookForm.onsubmit = addBook
 
 const saveLocal = () => {
     localStorage.setItem('library', JSON.stringify(library.books))
+
 }

@@ -1,3 +1,16 @@
+:root {
+    --tile-background-color: rgba(241, 243, 244, 1);
+    --icon-size: 48px;
+    --title-height: 32px;
+    --tile-size: 112px;
+    --most-visited-text-color: rgba(0, 0, 0, 1);
+    --column-count: 1;
+    --row-count: 1;
+    --ntp-realbox-height: 44px;
+    --color-realbox-shadow: #20212447;
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -29,4 +42,212 @@
 
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    min-width: fit-content;
+    padding-top: 10vh;
+    position: relative;
+    z-index: 1;
+
+}
+
+header {
+    margin-bottom: 38px;
+    z-index: 1;
+    font-size: 2rem;
+}
+
+#container {
+    display: contents;
+}
+
+.tile-icon {
+    align-items: center;
+    background-color: var(--tile-background-color);
+    border-radius: 50%;
+    display: flex;
+    flex-shrink: 0;
+    height: var(--icon-size);
+    justify-content: center;
+    margin-top: 16px;
+    width: var(--icon-size);
+}
+
+.tile-title {
+    align-items: center;
+    border-radius: calc(var(--title-height)/ 2 + 2px);
+    color: var(--most-visited-text-color);
+    display: flex;
+    height: var(--title-height);
+    line-height: calc(var(--title-height)/ 2);
+    margin-top: 6px;
+    padding: 2px 8px;
+    width: 88px;
+}
+
+.tile-title span {
+    font-weight: 400;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+#addBookBtn {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    justify-content: unset;
+    padding: 0;
+}
+
+#addBookBtn,
+.tile {
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: var(--tile-size);
+    opacity: 1;
+    outline: 0;
+    position: relative;
+    text-decoration: none;
+    transition-duration: .3s;
+    transition-property: left, top;
+    transition-timing-function: ease-in-out;
+    user-select: none;
+    width: var(--tile-size);
+}
+
+#addShortcutIcon {
+    font-size: 1.5rem;
+}
+
+#addBookModal {
+    overflow-y: auto;
+    border: none;
+    border-radius: 28px;
+    box-shadow: 0 4px 8px 3px rgb(0 0 0 / 15%), 0 1px 3px rgb(0 0 0 / 30%);
+    overflow-x: auto;
+    background: #f3f6fc
+}
+
+#addBookForm {
+    overflow-y: overlay;
+    box-sizing: border-box;
+    height: 100%;
+    min-width: 240px;
+    padding-bottom: 17px;
+    padding-top: 17px;
+    position: relative;
+
+}
+
+.input {
+    margin-bottom: 16px;
+    position: relative;
+    font-size: 81.25%;
+    border-radius: calc(0.5 * var(--ntp-realbox-height));
+    box-shadow: 0 1px 6px 0 var(--color-realbox-shadow);
+    height: var(--ntp-realbox-heigh);
+    font-size: 16px;
+    border: none;
+    padding: 8px;
+    word-wrap: break-word;
+    outline: none;
+    font-size: 14px;
+}
+
+
+#submitButton {
+    font-family: "Google Sans", "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: normal;
+    border-radius: 8px;
+    border: 1px solid #747775;
+    background-color: transparent;
+    color: #1f1f1f;
+    margin-bottom: 9px;
+    margin-top: 8px;
+    padding: 5px 15px;
+
+}
+
+.book-card {
+    width: 200px;
+    overflow-y: auto;
+    border: none;
+    border-radius: 28px;
+    box-shadow: 0 4px 8px 3px rgb(0 0 0 / 15%), 0 1px 3px rgb(0 0 0 / 30%);
+    overflow-x: auto;
+    background: #f3f6fc;
+    padding: 17px;
+
+}
+
+.btn-light-red {
+    font-weight: 500;
+    width: 100px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: normal;
+    border-radius: 8px;
+    border: 1px solid #747775;
+    background-color: transparent;
+    color: #1f1f1f;
+    margin-bottom: 9px;
+    margin-top: 8px;
+    padding: 5px 5px;
+}
+
+.btn-light-green {
+    font-weight: 500;
+    width: 100px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: normal;
+    border-radius: 8px;
+    border: 1px solid #747775;
+    background-color: transparent;
+    color: #1f1f1f;
+    margin-bottom: 9px;
+    margin-top: 8px;
+    padding: 5px 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.remove-btn {
+    font-weight: 500;
+    width: 100px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: normal;
+    border-radius: 8px;
+    border: 1px solid #747775;
+    background-color: transparent;
+    color: #1f1f1f;
+    margin-bottom: 9px;
+    margin-top: 8px;
+    padding: 5px 5px;
+}
+
+.books-grid {
+    display: grid;
+    gap: 30px;
 }
